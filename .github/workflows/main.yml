@@ -15,7 +15,7 @@ jobs:
         run: cat /etc/os-release
 
       - name: Reconfigure APT Repo sources
-        run: sed -i 's/Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/debian.sources
+        run: "sed -i 's/Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/debian.sources"
 
       - name: Install Dependencies
         run: |
