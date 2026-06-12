@@ -8,5 +8,7 @@ jobs:
       image: debian:trixie
 
     steps:
-      - run: uname -m
-      - run: cat /etc/os-release
+      - name: uname
+        run: uname -m
+      - name: OS
+        run: cat /etc/os-release
