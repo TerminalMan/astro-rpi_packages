@@ -20,4 +20,13 @@ jobs:
       - name: Install Dependencies
         run: |
           apt update
-          apt install -y git
+          apt install -y git dpkg-dev devscripts equivs
+
+      - name: Setup Build Env
+        run: |
+          mkdir /tmp/indi && cd /tmp/indi
+          apt source indi
+          git clone --depth 1 https://github.com/indilib/indi.git
+          cd indi
+          mk-build-deps -i -r debian/control
+          dpkg-buildpackage -us -uc -b
