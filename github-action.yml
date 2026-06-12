@@ -1,0 +1,11 @@
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    container:
+      image: debian:trixie
+      options: --platform=linux/arm64
+
+    steps:
+      - run: uname -m
+      - run: cat /etc/os-release
