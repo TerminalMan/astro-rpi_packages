@@ -28,6 +28,8 @@ jobs:
           apt source indi
           git clone --depth 1 https://github.com/indilib/indi.git
           cd indi
+          git fetch --tags
+          git checkout v2.2.2
           mk-build-deps -i -r debian/control -t 'apt-get -y --no-install-recommends'
           pwd
           ls
