@@ -52,15 +52,17 @@ jobs:
       - name: Package Deb Files
         run: |
           cd /tmp/indi/
-          tar -czvf indi.tar.gz indi-bin_*.deb libindi1_* libindi-data_* libindi-dev_*
+          tar -czvf indi.tar.gz indi-bin_*.deb libindi1_*deb libindi-data_*deb libindi-dev_*deb
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: libindi_dev
           path: |
-            /tmp/indi/libindi-dev_*
-            /tmp/indi/libindi1_*
+            /tmp/indi/libindi-dev_*deb
+            /tmp/indi/libindi1_*deb
+            /tmp/indi/indi-bin_*deb
+            /tmp/indi/indi-bin_*deb
 
 #      - name: Create Release
 #        uses: softprops/action-gh-release@v2
