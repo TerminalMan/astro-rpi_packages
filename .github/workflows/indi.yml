@@ -94,7 +94,9 @@ jobs:
 
       - name: Install indi Dependency
         run: |
-          7z x libindi_dev
+          ls
+          ls ..
+          7z x libindi_dev.zip
           apt install -y ./indi*deb ./libindi*deb
 
       - name: Clone openphd2 Repo
