@@ -1,0 +1,64 @@
+name: Build newest deb package for aarch64 debian
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+
+    container:
+      image: debian:trixie
+
+    steps:
+      - name: uname
+        run: uname -m
+
+      - name: OS
+        run: cat /etc/os-release
+
+      - name: Reconfigure APT Repo sources
+        run: "sed -i 's/Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/debian.sources"
+
+      - name: Install Dependencies
+        run: |
+          apt update
+          apt install -y git dpkg-dev devscripts equivs
+
+      - name: Setup Build Env
+        run: |
+          mkdir /tmp/indi && cd /tmp/indi
+          apt source indi
+          git clone --depth 1 https://github.com/indilib/indi.git
+          cd indi
+          git fetch --tags
+          git checkout v2.2.2
+          mk-build-deps -i -r debian/control -t 'apt-get -y --no-install-recommends'
+          pwd
+          ls
+
+      - name: Build Indi Package
+        run: |
+          cd /tmp/indi/indi
+          dpkg-buildpackage -us -uc -b
+
+      - name: Package Deb Files
+        run: |
+          cd /tmp/indi/
+          tar -czvf release.tar.gz *.deb
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian-packages
+          path: /tmp/indi/release.tar.gz
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: /tmp/indi/release.tar.gz
