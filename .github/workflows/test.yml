@@ -18,7 +18,7 @@ jobs:
 
       - name: OS
         run: |
-          cd tmp
+          cd /tmp
           echo "indi file" > file.txt
 
       - name: Upload artifacts
