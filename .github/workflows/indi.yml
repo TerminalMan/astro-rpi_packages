@@ -6,7 +6,7 @@ on:
       - "*"
 
 jobs:
-  build:
+  indi:
     runs-on: ubuntu-24.04-arm
 
     container:
@@ -47,16 +47,30 @@ jobs:
       - name: Package Deb Files
         run: |
           cd /tmp/indi/
-          tar -czvf release.tar.gz indi-bin_*.deb libindi1_* libindi-data_* libindi-dev_*
+          tar -czvf indi.tar.gz indi-bin_*.deb libindi1_* libindi-data_* libindi-dev_*
 
-#      - name: Upload artifacts
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: debian-packages
-#          path: /tmp/indi/release.tar.gz
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: libindi_dev
+          path: /tmp/indi/libindi-dev_*
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          files: /tmp/indi/release.tar.gz
+          files: /tmp/indi/indi.tar.gz
+
+  openphd2:
+    needs: indi
+    runs-on: ubuntu-24.04-arm
+
+    container:
+      image: debian:trixie
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: libindi_dev
+          path: libindi_dev
+

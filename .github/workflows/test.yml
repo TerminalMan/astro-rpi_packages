@@ -1,0 +1,52 @@
+name: Build newest deb package for aarch64 debian
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  indi:
+    runs-on: ubuntu-24.04-arm
+
+    container:
+      image: debian:trixie
+
+    steps:
+      - name: uname
+        run: uname -m
+
+      - name: OS
+        run: |
+          cd tmp
+          echo "indi file" > file.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: indi
+          path: /tmp/file.txt
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: /tmp/file.txt
+
+  openphd2:
+    needs: indi
+    runs-on: ubuntu-24.04-arm
+
+    container:
+      image: debian:trixie
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: indi
+          path: indi
+
+      - run: |
+          ls
+          cat file.txt
+
