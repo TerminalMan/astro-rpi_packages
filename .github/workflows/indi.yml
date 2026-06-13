@@ -1,14 +1,14 @@
 name: Build newest deb package for aarch64 debian
 
-#on:
-#  push:
-#    tags:
-#      - "*"
-
 on:
   push:
-    branches:
+    tags:
       - "*"
+
+#on:
+#  push:
+#    branches:
+#      - "*"
 
 jobs:
   indi:
@@ -64,11 +64,11 @@ jobs:
             /tmp/indi/libindi-data_*deb
             /tmp/indi/indi-bin_*deb
 
-#      - name: Create Release
-#        uses: softprops/action-gh-release@v2
-#        with:
-#          tag_name: ${{ github.ref_name }}
-#          files: /tmp/indi/indi.tar.gz
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: /tmp/indi/indi.tar.gz
 
   openphd2:
     needs: indi
@@ -108,23 +108,16 @@ jobs:
           cmake -DUSE_SYSTEM_LIBINDI=1 ..
           make
 
-      - name: Test
-        run: echo $GITHUB_WORKSPACE
-
-      - name: Test2
-        run: ls
-
-      - name: Test3
-        run: pwd
-          
-      - name: Test4
-        run: ls phd2/
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: openphd2
           path: ${{ github.workspace }}/phd2/tmp
      
+      - name: Append to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: ${{ github.workspace }}/phd2/tmp
 
 
