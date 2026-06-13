@@ -107,10 +107,18 @@ jobs:
           cd tmp
           cmake -DUSE_SYSTEM_LIBINDI=1 ..
           make
-          ls
-          pwd
-          echo $GITHUB_WORKSPACE
-          ls $GITHUB_WORKSPACE
+
+      - name: Test
+        run: echo $GITHUB_WORKSPACE
+
+      - name: Test2
+        run: ls
+
+      - name: Test3
+        run: pwd
+          
+      - name: Test4
+        run: ls phd2/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
