@@ -124,7 +124,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: openphd2
-          path: ${{ GITHUB_WORKSPACE }}/phd2/tmp
+          path: ${{ github.workspace }}/phd2/tmp
      
 
 
