@@ -6,9 +6,9 @@ BUILDDIR=/tmp/openphd2
 OUTPUTDIR=/tmp/output
 
 mkdir $BUILDDIR
-mkdir $OUTPUTDIR
+mkdir -p $OUTPUTDIR
 
-cd -p $BUILDDIR
+cd  $BUILDDIR
 
 apt update
 apt install -y \

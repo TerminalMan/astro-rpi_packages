@@ -19,8 +19,14 @@ jobs:
       - name: Build Indi Debian Package
         run: bash indi.sh
 
+      - name: Check Build Output
+        run: ls /tmp/output/*indi*
+
       - name: Build Openphd2 Debian Package
         run: bash openphd2.sh
+
+      - name: Check Build Output
+        run: ls /tmp/output/*phd2*
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
