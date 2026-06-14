@@ -10,7 +10,6 @@ mkdir -p $OUTPUTDIR
 
 cd $BUILDDIR
 
-sed -i 's/Types: deb/Types: deb deb-src/' /etc/apt/sources.list.d/debian.sources
 apt update
 apt install -y \
 	git dpkg-dev devscripts equivs \
@@ -21,7 +20,6 @@ apt install -y \
 	libogg-dev libfftw3-dev libev-dev \
 	librtlsdr-dev libxisf-dev libudev-dev
 
-apt source indi
 git clone --depth 1 --branch v$VERSION https://github.com/indilib/indi.git
 
 cd indi
