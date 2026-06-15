@@ -34,11 +34,23 @@ jobs:
       - name: Check Build Output
         run: ls /tmp/output/*phd2*
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+#      - name: Upload artifacts
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: packages
+#          path : |
+#            /tmp/output/indi-bin_*.deb
+#            /tmp/output/libindi-dev_*.deb
+#            /tmp/output/libindi-data_*.deb
+#            /tmp/output/libindi1_*.deb
+#            /tmp/output/phd2_*.deb
+#            /tmp/output/indi-asi_*.deb
+#            /tmp/output/libasi_*.deb
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: packages
-          path : |
+          files: |
             /tmp/output/indi-bin_*.deb
             /tmp/output/libindi-dev_*.deb
             /tmp/output/libindi-data_*.deb
@@ -46,3 +58,4 @@ jobs:
             /tmp/output/phd2_*.deb
             /tmp/output/indi-asi_*.deb
             /tmp/output/libasi_*.deb
+
