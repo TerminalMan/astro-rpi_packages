@@ -1,7 +1,8 @@
 #!/bin/bash
 
-VERSION=2.2.2
+source versions.txt
 
+VERSION=$indi_version
 BUILDDIR=/tmp/indi
 OUTPUTDIR=/tmp/output
 

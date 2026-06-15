@@ -1,7 +1,8 @@
 #!/bin/bash
 
-VERSION=2.2.3
+source versions.txt
 
+VERSION=$indi_3rdparty_version
 BUILDDIR=/tmp/indi-3rdparty
 OUTPUTDIR=/tmp/output
 

@@ -2,7 +2,7 @@ name: Build newest deb package for aarch64 debian
 
 on:
   push:
-    branches:
+    tags:
       - "*"
 
 jobs:

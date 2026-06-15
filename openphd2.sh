@@ -1,7 +1,8 @@
 #!/bin/bash
 
-VERSION=2.6.14
+source versions.txt
 
+VERSION=$openphd2_version
 BUILDDIR=/tmp/openphd2
 OUTPUTDIR=/tmp/output
 
