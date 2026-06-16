@@ -58,4 +58,5 @@ jobs:
             /tmp/output/phd2_*.deb
             /tmp/output/indi-asi_*.deb
             /tmp/output/libasi_*.deb
+            /tmp/output/indi-eqmod_*.deb
 

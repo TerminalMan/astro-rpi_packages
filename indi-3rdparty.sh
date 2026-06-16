@@ -36,8 +36,11 @@ bash indi-3rdparty-deb.sh libasi
 apt install ./build/libasi_*.deb
 
 bash indi-3rdparty-deb.sh indi-asi
+bash indi-3rdparty-deb.sh indi-eqmod
 
 cp build/libasi_*.deb $OUTPUTDIR
 cp build/indi-asi_*.deb $OUTPUTDIR
+
+cp build/indi-eqmod_*.deb $OUTPUTDIR
 
 
