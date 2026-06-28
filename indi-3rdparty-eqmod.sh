@@ -21,7 +21,7 @@ apt install -y \
 	libgphoto2-dev libboost-dev libboost-regex-dev \
 	librtlsdr-dev liblimesuite-dev libftdi1-dev \
 	libavcodec-dev libavdevice-dev libzmq3-dev \
-	libudev-dev libzmq3-dev 7zip wget
+	libudev-dev libzmq3-dev 7zip
 
 apt install -y \
 	$OUTPUTDIR/libindi-dev*.deb \
@@ -33,26 +33,10 @@ if [[ ! -d indi-3rdparty ]]
 	git clone --depth 1 --branch v$VERSION https://github.com/indilib/indi-3rdparty
 fi
 
-wget -O /tmp/atik.zip https://downloads.atik-cameras.com/AtikCamerasSDK_2025_11_11_Master_2111.zip
-7z x /tmp/atik.zip -o/tmp/atik
-
-cp /tmp/atik/include/* /usr/lib/
-
-case "$(uname -m)" in
-	x86_64)
-		cp /tmp/atik/lib/64/NoFlyCapture/* /usr/lib/
-		;;
-	aarch64|arm64)
-		cp /tmp/atik/lib/ARM/64/NoFlyCapture/* /usr/lib/
-		;;
-esac
-
 cd $BUILDDIR/indi-3rdparty/scripts
 bash indi-3rdparty-deb.sh libasi
 apt install ./build/libasi_*.deb
 
-bash indi-3rdparty-deb.sh indi-atik
+bash indi-3rdparty-deb.sh indi-eqmod
 
-cp build/indi-atik_*deb $OUTPUTDIR
-
-
+cp build/indi-eqmod_*.deb $OUTPUTDIR
