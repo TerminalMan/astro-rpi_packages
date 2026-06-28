@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Script builds and installs the libatik package
+
 source versions.txt
 
 VERSION=$indi_3rdparty_version
@@ -30,10 +32,10 @@ apt install -y \
 	$OUTPUTDIR/indi-bin*.deb
 
 cd $BUILDDIR/indi-3rdparty/scripts
-bash indi-3rdparty-deb.sh libasi
-apt install ./build/libasi_*.deb
+bash indi-3rdparty-deb.sh libatik
 
 bash indi-3rdparty-deb.sh indi-atik
 
-cp build/indi-atik_*deb $OUTPUTDIR
+cp build/libatik_*deb $OUTPUTDIR
 
+apt install $OUTPUTDIR/libatik_*deb
