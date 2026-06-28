@@ -28,3 +28,8 @@ dpkg-buildpackage -us -uc -b
 
 cd $BUILDDIR
 cp indi-bin_*deb libindi1_*deb libindi-data_*deb libindi-dev_*deb $OUTPUTDIR
+
+apt install $OUTPUTDIR/indi-bin_*.deb \
+			$OUTPUTDIR/libindi1_*deb \
+			$OUTPUTDIR/libindi-data_*deb \
+			$OUTPUTDIR/libindi-dev_*deb
