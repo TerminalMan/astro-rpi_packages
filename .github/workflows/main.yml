@@ -36,15 +36,15 @@ jobs:
       - name: Check Build Output for indi-asi
         run: ls /tmp/output/*indi-asi_*
 
-      - name: Build libatik
-        run: bash indi_3rdparty_libatik.sh
-      - name: Check Build Output for libatik
-        run: ls /tmp/output/libatik_*
+#      - name: Build libatik
+#        run: bash indi_3rdparty_libatik.sh
+#      - name: Check Build Output for libatik
+#        run: ls /tmp/output/libatik_*
 
-      - name: Build indi-atik
-        run: bash indi_3rdparty_indi-atik.sh
-      - name: Check Build Output for indi-atik
-        run: ls /tmp/output/*atik_*
+#      - name: Build indi-atik
+#        run: bash indi_3rdparty_indi-atik.sh
+#      - name: Check Build Output for indi-atik
+#        run: ls /tmp/output/*atik_*
 
       - name: Build Openphd2 Debian Package
         run: bash openphd2.sh
