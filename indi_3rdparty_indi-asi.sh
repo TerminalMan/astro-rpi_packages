@@ -29,7 +29,7 @@ apt install -y \
 	$OUTPUTDIR/libindi-data*.deb \
 	$OUTPUTDIR/indi-bin*.deb
 
-if [[ ! -d indi-3rdparty ]]
+if [[ ! -d indi-3rdparty ]]; then
 	git clone --depth 1 --branch v$VERSION https://github.com/indilib/indi-3rdparty
 fi
 
