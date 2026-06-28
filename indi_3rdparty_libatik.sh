@@ -34,8 +34,6 @@ apt install -y \
 cd $BUILDDIR/indi-3rdparty/scripts
 bash indi-3rdparty-deb.sh libatik
 
-bash indi-3rdparty-deb.sh indi-atik
-
 cp build/libatik_*deb $OUTPUTDIR
 
 apt install $OUTPUTDIR/libatik_*deb
