@@ -18,19 +18,36 @@ jobs:
 
       - name: Build Indi Debian Package
         run: bash indi.sh
-
       - name: Check Build Output
         run: ls /tmp/output/*indi*
 
-      - name: Build Indi ZWO ASI Driver Debian Packages
-        run: bash indi-3rdparty.sh
+      - name: Build indi-eqmod
+        run: bash indi_3rdparty_indi-eqmod.sh
+      - name: Check Build Output for indi-eqmod
+        run: ls /tmp/output/*eqmod_*
 
-      - name: Check Build Output (ZWO ASI)
-        run: ls /tmp/output/*asi*
+      - name: Build libasi
+        run: bash indi_3rdparty_libasi.sh
+      - name: Check Build Output for libasi
+        run: ls /tmp/output/libasi_*
+
+      - name: Build indi-asi
+        run: bash indi_3rdparty_indi-asi.sh
+      - name: Check Build Output for libasi
+        run: ls /tmp/output/*indi-asi_*
+
+      - name: Build libatik
+        run: bash indi_3rdparty_libatik.sh
+      - name: Check Build Output for libatik
+        run: ls /tmp/output/libatik_*
+
+      - name: Build indi-atik
+        run: bash indi_3rdparty_indi-atik.sh
+      - name: Check Build Output for indi-atik
+        run: ls /tmp/output/*atik_*
 
       - name: Build Openphd2 Debian Package
         run: bash openphd2.sh
-
       - name: Check Build Output
         run: ls /tmp/output/*phd2*
 
