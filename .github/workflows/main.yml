@@ -33,7 +33,7 @@ jobs:
 
       - name: Build indi-asi
         run: bash indi_3rdparty_indi-asi.sh
-      - name: Check Build Output for libasi
+      - name: Check Build Output for indi-asi
         run: ls /tmp/output/*indi-asi_*
 
       - name: Build libatik
