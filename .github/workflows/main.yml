@@ -76,4 +76,6 @@ jobs:
             /tmp/output/indi-asi_*.deb
             /tmp/output/libasi_*.deb
             /tmp/output/indi-eqmod_*.deb
+            /tmp/output/libatik_*.deb
+            /tmp/output/indi-atik_*.deb
 
