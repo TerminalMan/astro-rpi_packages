@@ -33,6 +33,8 @@ if [[ ! -d indi-3rdparty ]]; then
 	git clone --depth 1 --branch v$VERSION https://github.com/indilib/indi-3rdparty
 fi
 
-bash indi-3rdparty-deb.sh indi-asi
+cd $BUILDDIR/indi-3rdparty/scripts
+bash indi-3rdparty-deb.sh indi-qhy
 
-cp build/indi-asi_*.deb $OUTPUTDIR
+cp build/indi-qhy_*.deb $OUTPUTDIR
+
