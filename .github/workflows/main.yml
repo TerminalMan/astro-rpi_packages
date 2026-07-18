@@ -46,7 +46,7 @@ jobs:
       - name: Check Build Output for indi-qhy
         run: ls /tmp/output/*indi-asi_*
 
-	  - name: Build fxload
+      - name: Build fxload
         run: bash fxload.sh
 
 #      - name: Build libatik
@@ -91,4 +91,4 @@ jobs:
             /tmp/output/indi-eqmod_*.deb
             /tmp/output/libqhy_*.deb
             /tmp/output/indi-qhy_*.deb
-			/tmp/output/fxload_*.deb
+            /tmp/output/fxload_*.deb
